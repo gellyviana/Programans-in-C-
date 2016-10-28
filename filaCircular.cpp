@@ -36,7 +36,15 @@ int removerFila(struct Fila* fl)
         cout<<"Fila vazia\n";
     }
     fl->qtdEle -= 1;
-    return fl->fila[(fl->qtdEle + fl->inicio - 1) % TAM];
+    return fl->fila[(fl->inicio - fl->qtdEle) % TAM];
+}
+
+void printFila(struct Fila* fl)
+{
+    for(int i = fl->inicio; i<(fl->qtdEle + fl->inicio); i++)
+    {
+        cout<<"Fila: "<<fl->fila[i]<<endl;
+    }
 }
 
 int main(int argc, char **argv)
@@ -44,5 +52,14 @@ int main(int argc, char **argv)
 
     struct Fila *fl = new struct Fila;
     CriaFila(fl);
+    inserirFila(fl, 10);
+    inserirFila(fl, 20);
+    inserirFila(fl, 30);
+    inserirFila(fl, 40);
+    printFila(fl);
+    cout<<"O valor removido da Fila: "<<removerFila(fl)<<endl;
+    cout<<"O valor removido da Fila: "<<removerFila(fl)<<endl;
+    cout<<"O valor removido da Fila: "<<removerFila(fl)<<endl;
+    printFila(fl);
     return 0;
 }
