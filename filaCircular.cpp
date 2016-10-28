@@ -35,8 +35,8 @@ int removerFila(struct Fila* fl)
     { 
         cout<<"Fila vazia\n";
     }
-    fl->qtdEle -= 1;
-    return fl->fila[(fl->inicio - fl->qtdEle) % TAM];
+    
+    return fl->fila[(fl->qtdEle + fl->inicio - 1) % TAM];
 }
 
 void printFila(struct Fila* fl)
